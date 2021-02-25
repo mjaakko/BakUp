@@ -14,6 +14,7 @@ dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
 
     implementation 'org.apache.commons:commons-compress:1.20'
+    implementation 'commons-cli:commons-cli:1.4'
 }
 
 test {
