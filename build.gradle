@@ -1,4 +1,5 @@
 plugins {
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
     id 'org.jetbrains.kotlin.jvm' version '1.4.10'
     id 'application'
 }
@@ -19,6 +20,12 @@ dependencies {
 
 test {
     useJUnit()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'xyz.malkki.bakup.MainKt'
+    }
 }
 
 compileKotlin {
