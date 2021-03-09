@@ -1,4 +1,4 @@
-package xyz.malkki.bakup.xyz.malkki.bakup
+package xyz.malkki.bakup
 
 import org.junit.Test
 import xyz.malkki.bakup.Archiver
