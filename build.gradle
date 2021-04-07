@@ -28,6 +28,12 @@ jar {
     }
 }
 
+shadowJar {
+    archiveBaseName.set('bakup')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+}
+
 compileKotlin {
     kotlinOptions.jvmTarget = '11'
 }
