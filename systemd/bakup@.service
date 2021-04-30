@@ -1,0 +1,10 @@
+[Unit]
+Description=Takes a backup of %i
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/bakup/configs/%i
+ExecStart=/usr/bin/bakup -d ${BACKUP_DIRECTORY} -o ${OUTPUT_DIRECTORY} -n ${MAX_BACKUPS}
+
+[Install]
+WantedBy=multi-user.target

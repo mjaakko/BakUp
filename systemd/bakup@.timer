@@ -1,0 +1,11 @@
+[Unit]
+Description=Takes a backup of %i daily
+
+[Timer]
+Unit=bakup@%i.service
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=10min
+
+[Install]
+WantedBy=timers.target

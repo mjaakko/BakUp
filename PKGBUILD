@@ -12,4 +12,9 @@ package() {
   cp $srcdir/bakup.jar $pkgdir/usr/share/java/bakup
   mkdir -p $pkgdir/usr/bin
   cp $srcdir/bakup $pkgdir/usr/bin
+  mkdir -p $pkgdir/usr/lib/systemd/system
+  cp $srcdir/bakup@.service $pkgdir/usr/lib/systemd/system
+  cp $srcdir/bakup@.timer $pkgdir/usr/lib/systemd/system
+  mkdir -p $pkgdir/etc/bakup/configs
+  cp $srcdir/example $pkgdir/etc/bakup/configs
 }

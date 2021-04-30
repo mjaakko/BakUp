@@ -1,0 +1,6 @@
+# Directory from which the backup will be taken
+BACKUP_DIRECTORY=/var
+# Directory where the backup archive will be saved
+OUTPUT_DIRECTORY=/tmp
+# Maximum number of backups to keep
+MAX_BACKUPS=5
