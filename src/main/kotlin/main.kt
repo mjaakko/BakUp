@@ -5,7 +5,9 @@ import org.apache.commons.cli.Options
 import xyz.malkki.bakup.BackupManager
 import java.nio.file.Files
 import java.nio.file.Paths
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main(args: Array<String>) {
     val cliOptions = Options().apply {
         addOption("d", "directory", true, "The directory which will be backed up")

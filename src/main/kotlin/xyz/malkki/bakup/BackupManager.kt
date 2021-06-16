@@ -9,6 +9,8 @@ import java.nio.file.Path
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 import kotlin.streams.toList
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTime
 
 class BackupManager(private val directory: Path, private val outputDirectory: Path, private val maxBackups: Int) {
     companion object {
@@ -56,12 +58,17 @@ class BackupManager(private val directory: Path, private val outputDirectory: Pa
         return "${directory.fileName}_${LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)}.tar.gz"
     }
 
+    @ExperimentalTime
     fun takeBackup() {
         removeOldestArchives()
         val fileName = createFileNameForBackup()
         println("Creating backup to $fileName")
-        Archiver.compressDirectory(directory, outputDirectory.resolve(fileName), GzipParameters().apply {
-            comment = ARCHIVE_COMMENT
-        })
+        measureTime {
+            Archiver.compressDirectory(directory, outputDirectory.resolve(fileName), GzipParameters().apply {
+                comment = ARCHIVE_COMMENT
+            })
+        }.apply {
+            println("Backup created in ${this.inSeconds.toInt()} seconds")
+        }
     }
 }
