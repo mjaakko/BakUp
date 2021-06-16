@@ -13,7 +13,9 @@ import java.io.FileOutputStream
 import java.nio.file.Files
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 class BackupManagerTest {
     @Rule @JvmField
     val folder = TemporaryFolder()
