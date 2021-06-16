@@ -46,9 +46,9 @@ class BackupManager(private val directory: Path, private val outputDirectory: Pa
             }
         } catch (ioe: IOException) {
             //If it's not possible to determine whether the file is a backup, do not remove it just to be safe
+            println("Failed to check content type of $path -> not deleting it just to be safe (${ioe.message})")
             return false
         }
-
     }
 
     private fun createFileNameForBackup(): String {
