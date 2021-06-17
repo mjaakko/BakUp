@@ -37,7 +37,7 @@ class BackupManager(private val directory: Path, private val outputDirectory: Pa
 
     private fun isBackupArchive(path: Path): Boolean {
         try {
-            if ("application/gzip" != Files.probeContentType(path)) {
+            if (!isGzip(path)) {
                 return false
             }
 
@@ -49,6 +49,18 @@ class BackupManager(private val directory: Path, private val outputDirectory: Pa
         } catch (ioe: IOException) {
             //If it's not possible to determine whether the file is a backup, do not remove it just to be safe
             println("Failed to check content type of $path -> not deleting it just to be safe (${ioe.message})")
+            return false
+        }
+    }
+
+    private fun isGzip(path: Path): Boolean {
+        try {
+            val inputStream = GzipCompressorInputStream(BufferedInputStream(Files.newInputStream(path)))
+            inputStream.use {
+                val metadata = it.metaData
+                return metadata != null
+            }
+        } catch (ioe: IOException) {
             return false
         }
     }
