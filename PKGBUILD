@@ -1,5 +1,5 @@
 pkgname=bakup
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 arch=('any')
 licence=('custom')
